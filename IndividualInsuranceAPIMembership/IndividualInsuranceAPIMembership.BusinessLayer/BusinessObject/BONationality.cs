@@ -1,4 +1,8 @@
 ﻿using IndividualInsuranceAPIMembership.BusinessLayer.BindingModel;
+using IndividualInsuranceAPIMembership.BusinessLayer.Helper;
+using IndividualInsuranceAPIMembership.DataAccess.Context;
+using IndividualInsuranceAPIMembership.DataAccess.Models.Membership;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,12 +13,18 @@ namespace IndividualInsuranceAPIMembership.BusinessLayer.BusinessObject
 {
     public class BONationality : IBONationality
     {
-        public async Task<BResNationality> Get()
+        private MembershipContext _membershipContext;
+        public BONationality(MembershipContext membershipContext)
         {
-            BResNationality result = new BResNationality();
+            _membershipContext = membershipContext;
+        }
+        public async Task<List<msNationality>> Get()
+        {
+            RepoNationality repo = new RepoNationality(_membershipContext);
+            List<msNationality> result = new List<msNationality>();
             try
             {
-
+                result = await repo.Get();
             }
             catch (Exception ex)
             {
@@ -23,9 +33,9 @@ namespace IndividualInsuranceAPIMembership.BusinessLayer.BusinessObject
             return result;
         }
 
-        public async Task<BResNationality> GetById(string ID)
+        public async Task<List<msNationality>> GetById(string ID)
         {
-            BResNationality result = new BResNationality();
+            List<msNationality> result = new List<msNationality>();
             try
             {
 

@@ -1,5 +1,7 @@
 ﻿using IndividualInsuranceAPIMembership.BusinessLayer.BindingModel;
 using IndividualInsuranceAPIMembership.BusinessLayer.BusinessObject;
+using IndividualInsuranceAPIMembership.DataAccess.Context;
+using IndividualInsuranceAPIMembership.DataAccess.Models.Membership;
 using Microsoft.AspNetCore.Mvc;
 
 namespace IndividualInsuranceAPIMembership.Controllers
@@ -9,13 +11,15 @@ namespace IndividualInsuranceAPIMembership.Controllers
     public class NationalityController : Controller
     {
         private IConfiguration _configuration;
-        BResNationality result = new BResNationality();
+        List<msNationality> result = new List<msNationality>();
         IBONationality _boNationality;
+        public MembershipContext _membershipContext;
 
-        public NationalityController(IConfiguration configuration)
+        public NationalityController(IConfiguration configuration, MembershipContext membershipContext)
         {
             _configuration = configuration;
-            _boNationality = new BONationality();
+            _membershipContext = membershipContext;
+            _boNationality = new BONationality(_membershipContext);
         }
 
         [HttpGet]
