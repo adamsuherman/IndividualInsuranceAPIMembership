@@ -4,6 +4,7 @@ using IndividualInsuranceAPIMembership.DataAccess.Context;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -28,48 +29,70 @@ namespace IndividualInsuranceAPIMembership.BusinessLayer.BusinessObject
             }
             catch (Exception ex)
             {
-
+                result.ResultCode = "00";
+                result.ResultMessage = ex.Message.ToString();
+                result.Data = null;
             }
             return result;
         }
-
-        public async Task<BResInsertMembership> Get(string ID)
+        public async Task<BResInsertMembership> GetById(Guid ID)
         {
             BResInsertMembership result = new BResInsertMembership();
             try
             {
-
+                result = await repo.GetById(ID);
             }
             catch (Exception ex)
             {
-
+                result.ResultCode = "00";
+                result.ResultMessage = ex.Message.ToString();
+                result.Data = null;
             }
             return result;
         }
-
-        public async Task<BResInsertMembership> Update(BReqInsertMembership request)
+        public async Task<BResInsertMembership> Get()
         {
             BResInsertMembership result = new BResInsertMembership();
             try
             {
-
+                result = await repo.Get();
             }
             catch (Exception ex)
             {
+                result.ResultCode = "00";
+                result.ResultMessage = ex.Message.ToString();
+                result.Data = null;
+            }
+            return result;
 
+        }
+        public async Task<BResUpdateMembership> Update(BReqUpdateMembership request)
+        {
+            BResUpdateMembership result = new BResUpdateMembership();
+            try
+            {
+                result = await repo.Update(request);
+            }
+            catch (Exception ex)
+            {
+                result.ResultCode = "00";
+                result.ResultMessage = ex.Message.ToString();
+                result.Data = null;
             }
             return result;
         }
-        public async Task<BResInsertMembership> Delete(string ID)
+        public async Task<BResInsertMembership> Delete(Guid ID)
         {
             BResInsertMembership result = new BResInsertMembership();
             try
             {
-
+                result = await repo.Delete(ID);
             }
             catch (Exception ex)
             {
-
+                result.ResultCode = "00";
+                result.ResultMessage = ex.Message.ToString();
+                result.Data = null;
             }
             return result;
         }

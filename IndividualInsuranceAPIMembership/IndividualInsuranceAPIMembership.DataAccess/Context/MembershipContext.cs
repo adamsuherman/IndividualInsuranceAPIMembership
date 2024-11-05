@@ -24,14 +24,16 @@ public partial class MembershipContext : DbContext
             entity.Property(e => e.Address).HasMaxLength(50);
             entity.Property(e => e.Birthdate).HasColumnType("datetime");
             entity.Property(e => e.CardNumber).HasMaxLength(50);
-            entity.Property(e => e.CreatedAt).HasColumnType("datetime");
-            entity.Property(e => e.CreatedDate).HasMaxLength(50);
+            entity.Property(e => e.CreatedAt).HasMaxLength(50);
+            entity.Property(e => e.CreatedDate).HasColumnType("datetime");
             entity.Property(e => e.Email).HasMaxLength(50);
             entity.Property(e => e.EndDate).HasColumnType("datetime");
             entity.Property(e => e.Name).HasMaxLength(50);
             entity.Property(e => e.NationalIdNumber).HasMaxLength(50);
             entity.Property(e => e.PhoneNumber).HasMaxLength(50);
+            entity.Property(e => e.Plafond).HasColumnType("decimal(18, 0)");
             entity.Property(e => e.PolicyNumber).HasMaxLength(50);
+            entity.Property(e => e.Premi).HasColumnType("decimal(18, 0)");
             entity.Property(e => e.StartDate).HasColumnType("datetime");
         });
 

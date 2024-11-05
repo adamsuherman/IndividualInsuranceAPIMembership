@@ -14,6 +14,7 @@ namespace IndividualInsuranceAPIMembership.Controllers
         private readonly MembershipContext _membershipContext;
 
         BResInsertMembership result = new BResInsertMembership();
+        BResUpdateMembership resultUpdate = new BResUpdateMembership();
 
         public MembershipController(IConfiguration configuration, MembershipContext membershipContext)
         {
@@ -30,21 +31,28 @@ namespace IndividualInsuranceAPIMembership.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetMembership(string ID)
+        public async Task<IActionResult> GetMembership(Guid ID)
         {
-            result = await _boMembership.Get(ID);
+            result = await _boMembership.GetById(ID);
+            return new OkObjectResult(result);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetMembershipAll()
+        {
+            result = await _boMembership.Get();
             return new OkObjectResult(result);
         }
 
         [HttpPost]
-        public async Task<IActionResult> UpdateMembership(BReqInsertMembership request)
+        public async Task<IActionResult> UpdateMembership(BReqUpdateMembership request)
         {
-            result = await _boMembership.Update(request);
+            resultUpdate = await _boMembership.Update(request);
             return new OkObjectResult(result);
         }
 
         [HttpPost]
-        public async Task<IActionResult> DeleteMembership(string ID)
+        public async Task<IActionResult> DeleteMembership(Guid ID)
         {
             result = await _boMembership.Delete(ID);
             return new OkObjectResult(result);

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace IndividualInsuranceAPIMembership.BusinessLayer.BindingModel
 {
-    public class BResInsertMembership
+    public class BResUpdateMembership
     {
-        public string ResultCode { get; set; }  
+        public string ResultCode { get; set; }
         public string ResultMessage { get; set; }
         public object Data { get; set; }
     }

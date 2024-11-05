@@ -19,6 +19,10 @@ public partial class TblPeserta
 
     public string? Email { get; set; }
 
+    public decimal? Premi { get; set; }
+
+    public decimal? Plafond { get; set; }
+
     public DateTime? Birthdate { get; set; }
 
     public DateTime? StartDate { get; set; }
