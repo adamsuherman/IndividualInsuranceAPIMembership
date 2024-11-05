@@ -6,6 +6,6 @@ namespace IndividualInsuranceAPIMembership.BusinessLayer.BusinessObject
     public interface IBONationality
     {
         Task<List<msNationality>> Get();
-        Task<List<msNationality>> GetById(string ID);
+        Task<msNationality> GetById(Guid ID);
     }
 }

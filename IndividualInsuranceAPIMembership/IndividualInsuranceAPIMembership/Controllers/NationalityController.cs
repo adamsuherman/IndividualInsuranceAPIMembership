@@ -11,9 +11,10 @@ namespace IndividualInsuranceAPIMembership.Controllers
     public class NationalityController : Controller
     {
         private IConfiguration _configuration;
-        List<msNationality> result = new List<msNationality>();
+        List<msNationality> ArrResult = new List<msNationality>();
+        msNationality result = new msNationality();
         IBONationality _boNationality;
-        public MembershipContext _membershipContext;
+        private readonly MembershipContext _membershipContext;
 
         public NationalityController(IConfiguration configuration, MembershipContext membershipContext)
         {
@@ -25,12 +26,12 @@ namespace IndividualInsuranceAPIMembership.Controllers
         [HttpGet]
         public async Task<IActionResult> GetNationality()
         {
-            result = await _boNationality.Get();
-            return new OkObjectResult(result);
+            ArrResult = await _boNationality.Get();
+            return new OkObjectResult(ArrResult);
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetNationalityById(string ID)
+        public async Task<IActionResult> GetNationalityById(Guid ID)
         {
             result = await _boNationality.GetById(ID);
             return new OkObjectResult(result);

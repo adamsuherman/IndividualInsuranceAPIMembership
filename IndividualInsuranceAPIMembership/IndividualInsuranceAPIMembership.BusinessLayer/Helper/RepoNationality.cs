@@ -24,7 +24,14 @@ namespace IndividualInsuranceAPIMembership.BusinessLayer.Helper
         public async Task<List<msNationality>> Get()
         {
             List<msNationality> objRes = new List<msNationality>();
-            objRes = await _context.msNationality.ToListAsync();
+            objRes = _context.msNationality.ToList();
+            return objRes;
+        }
+
+        public async Task<msNationality> GetByID(Guid ID)
+        {
+            msNationality objRes = new msNationality();
+            objRes = _context.msNationality.Where(t => t.NationalityId == ID).FirstOrDefault();
             return objRes;
         }
     }
