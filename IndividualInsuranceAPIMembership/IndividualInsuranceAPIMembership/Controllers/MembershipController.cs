@@ -1,5 +1,6 @@
 ﻿using IndividualInsuranceAPIMembership.BusinessLayer.BindingModel;
 using IndividualInsuranceAPIMembership.BusinessLayer.BusinessObject;
+using IndividualInsuranceAPIMembership.DataAccess.Context;
 using Microsoft.AspNetCore.Mvc;
 
 namespace IndividualInsuranceAPIMembership.Controllers
@@ -10,13 +11,15 @@ namespace IndividualInsuranceAPIMembership.Controllers
     {
         private IConfiguration _configuration;
         private readonly IBOMembership _boMembership;
+        private readonly MembershipContext _membershipContext;
 
         BResInsertMembership result = new BResInsertMembership();
 
-        public MembershipController(IConfiguration configuration)
+        public MembershipController(IConfiguration configuration, MembershipContext membershipContext)
         {
             _configuration= configuration;
-            _boMembership= new BOMembership();
+            _membershipContext = membershipContext;
+            _boMembership = new BOMembership(_membershipContext);
         }
 
         [HttpPost]

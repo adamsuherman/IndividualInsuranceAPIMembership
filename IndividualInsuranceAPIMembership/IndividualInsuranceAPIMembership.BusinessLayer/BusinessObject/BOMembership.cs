@@ -1,4 +1,6 @@
 ﻿using IndividualInsuranceAPIMembership.BusinessLayer.BindingModel;
+using IndividualInsuranceAPIMembership.BusinessLayer.Helper;
+using IndividualInsuranceAPIMembership.DataAccess.Context;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,12 +11,20 @@ namespace IndividualInsuranceAPIMembership.BusinessLayer.BusinessObject
 {
     public class BOMembership : IBOMembership
     {
+        private MembershipContext _membershipContext;
+        RepoMembership repo;
+        
+        public BOMembership(MembershipContext membershipContext)
+        {
+            _membershipContext = membershipContext;
+            repo = new RepoMembership(membershipContext);
+        }
         public async Task<BResInsertMembership> Insert(BReqInsertMembership request)
         {
             BResInsertMembership result = new BResInsertMembership();
             try
             {
-
+                result = await repo.Insert(request);
             }
             catch (Exception ex)
             {

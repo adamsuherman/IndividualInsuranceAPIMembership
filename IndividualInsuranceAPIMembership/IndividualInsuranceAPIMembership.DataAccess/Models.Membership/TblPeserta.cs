@@ -29,7 +29,7 @@ public partial class TblPeserta
 
     public string? NationalIdNumber { get; set; }
 
-    public DateTime? CreatedAt { get; set; }
+    public string? CreatedAt { get; set; }
 
-    public string? CreatedDate { get; set; }
+    public DateTime? CreatedDate { get; set; }
 }

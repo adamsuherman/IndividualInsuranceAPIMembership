@@ -18,7 +18,7 @@ namespace IndividualInsuranceAPIMembership.BusinessLayer.BindingModel
         public string Birthdate { get; set; }
         public string StartDate { get; set; }
         public string EndDate { get; set; }
-        public string NationalityId { get; set; }
+        public Guid NationalityId { get; set; }
         public string NationalIdNumber { get; set; }
         public string CreatedAt { get; set; }
         public string CreatedDate { get; set; }
