@@ -31,7 +31,7 @@ namespace IndividualInsuranceAPIMembership.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetMembership(Guid ID)
+        public async Task<IActionResult> GetMembership(string ID)
         {
             result = await _boMembership.GetById(ID);
             return new OkObjectResult(result);

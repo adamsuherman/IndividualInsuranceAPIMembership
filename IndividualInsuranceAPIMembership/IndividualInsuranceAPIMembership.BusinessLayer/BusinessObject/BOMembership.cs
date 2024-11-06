@@ -35,7 +35,7 @@ namespace IndividualInsuranceAPIMembership.BusinessLayer.BusinessObject
             }
             return result;
         }
-        public async Task<BResInsertMembership> GetById(Guid ID)
+        public async Task<BResInsertMembership> GetById(string ID)
         {
             BResInsertMembership result = new BResInsertMembership();
             try

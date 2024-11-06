@@ -76,12 +76,12 @@ namespace IndividualInsuranceAPIMembership.BusinessLayer.Helper
             return result;
         }
 
-        public async Task<BResInsertMembership> GetById(Guid ID)
+        public async Task<BResInsertMembership> GetById(string ID)
         {
             BResInsertMembership result = new BResInsertMembership();
             var data = (from peserta in _context.TblPeserta
                         join nationality in _context.msNationality on peserta.NationalityId equals nationality.NationalityId
-                        where peserta.ID == ID
+                        where peserta.ID.ToString() == ID
                         select new
                         {
                             ID = peserta.ID,
@@ -186,7 +186,7 @@ namespace IndividualInsuranceAPIMembership.BusinessLayer.Helper
         {
             BResInsertMembership result = new BResInsertMembership();
 
-            var peserta = new TblPeserta { ID = ID };
+            var peserta = new TblPeserta {  ID = ID };
             _context.TblPeserta.Attach(peserta);
             _context.TblPeserta.Remove(peserta);
             _context.SaveChanges();
